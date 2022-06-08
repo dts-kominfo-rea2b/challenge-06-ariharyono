@@ -30,13 +30,13 @@ const dataOlah = (rawData) => {
   }
 };
 const bacaData = async(callback) => {
-  let dataFile = [file1, file2, file3];
-  let saveData = [];
+  let arrayFile = [file1, file2, file3];
+  let data = [];
     for (const element of arrayFile) {
       const dataFile = await fs.promises.readFile(element, "utf-8");
-      saveData.push(dataOlah(JSON.parse(dataFile)));
+      data.push(dataOlah(JSON.parse(dataFile)));
     }
-    callback(null, saveData);
+    callback(null, data);
 };
 
 

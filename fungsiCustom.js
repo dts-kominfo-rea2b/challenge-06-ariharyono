@@ -18,28 +18,27 @@ let modifyFile3 = (val) => {
 
 // TODO: Kerjakan bacaData
 // gunakan variabel file1, file2, dan file3
-
-const bacaData = (callback) => {
+const dataOlah = (rawData) => {
+  if (rawData.message !== undefined) {
+    return rawData.message.split(" ")[1];
+  }
+  else if (rawData[0].message !== undefined) {
+    return rawData[0].message.split(" ")[1];
+  }
+  else if (rawData[0].data.message !== undefined) {
+    return rawData[0].data.message.split(" ")[1];
+  }
+};
+const bacaData = async(callback) => {
   let dataFile = [file1, file2, file3];
   let saveData = [];
-  dataFile.forEach((namaData, index) =>
-    fs.readFile(namaData, (err, data) => {
-      if (err) {
-        return callback(err);
-      } else {
-        if (index == 0) {
-          saveData.push(JSON.parse(data).message.split(" ")[1]);
-        } else if (index == 1) {
-          saveData.push(JSON.parse(data)[0].message.split(" ")[1]);
-        } else if (index == 2) {
-          saveData.push(JSON.parse(data)[0].data.message.split(" ")[1]);
-
-          callback(null, saveData);
-        }
-      }
-    })
-  );
+    for (const element of arrayFile) {
+      const dataFile = await fs.promises.readFile(element, "utf-8");
+      saveData.push(dataOlah(JSON.parse(dataFile)));
+    }
+    callback(null, saveData);
 };
+
 
 // ! JANGAN DIMODIFIKASI
 module.exports = {

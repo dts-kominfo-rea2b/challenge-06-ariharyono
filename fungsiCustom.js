@@ -33,8 +33,7 @@ const bacaData = async(callback) => {
   let arrayFile = [file1, file2, file3];
   let data = [];
     for (const element of arrayFile) {
-      const dataFile = await fs.promises.readFile(element, "utf-8");
-      data.push(dataOlah(JSON.parse(dataFile)));
+      data.push(dataOlah(JSON.parse(await fs.promises.readFile(element))));
     }
     callback(null, data);
 };

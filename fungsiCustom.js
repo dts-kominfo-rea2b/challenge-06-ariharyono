@@ -61,7 +61,8 @@ const bacaData = (callback) => {
         data.push(dataOlah(JSON.parse(data1)));
         data.push(dataOlah(JSON.parse(data2)));
         data.push(dataOlah(JSON.parse(data3)));
-        callback(err3, data);
+        
+        callback(null, data);
       });
     });
   });

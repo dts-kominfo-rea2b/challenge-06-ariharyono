@@ -42,6 +42,7 @@ const dataOlah = (rawData) => {
 */
 
 const bacaData = (callback) => {
+  const data = [];
   fs.readFile(file1, "utf-8", (err1, data1) => {
     if (err1) {
       return console.log(err1);
@@ -56,7 +57,7 @@ const bacaData = (callback) => {
         if (err3) {
           return console.log(err3);
         }
-        const data = [];
+        
         data.push(dataOlah(JSON.parse(data1)));
         data.push(dataOlah(JSON.parse(data2)));
         data.push(dataOlah(JSON.parse(data3)));

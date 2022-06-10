@@ -56,10 +56,11 @@ const bacaData = (callback) => {
         if (err3) {
           return console.log(err3);
         }
-        const olah1 = `['${dataOlah(JSON.parse(data1))}'`;
-        const olah2 = `'${dataOlah(JSON.parse(data2))}'`;
-        const olah3 = `'${dataOlah(JSON.parse(data3))}']`;
-        callback(err3, [olah1, olah2, olah3]);
+        const data = [];
+        data.push(dataOlah(JSON.parse(data1)));
+        data.push(dataOlah(JSON.parse(data2)));
+        data.push(dataOlah(JSON.parse(data3)));
+        callback(err3, data);
       });
     });
   });
